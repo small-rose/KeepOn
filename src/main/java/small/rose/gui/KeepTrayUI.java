@@ -29,10 +29,6 @@ public class KeepTrayUI{
 
     public TrayIcon createTrayIcon(JFrame jFrame) {
 
-        TrayIcon trayIcon1 = map.get(KEEP_TRAY_NAME);
-        if (trayIcon1!=null){
-            return trayIcon1;
-        }
         // 创建默认系统托盘图标
         //Image defaultImage = SystemTray.getSystemTray().getTrayIcons()[0].getImage();
 
@@ -87,7 +83,10 @@ public class KeepTrayUI{
         // 检查系统支持性[1](@ref)
         if (SystemTray.isSupported()) {
             SystemTray tray = SystemTray.getSystemTray();
-
+            TrayIcon trayIcon1 = map.get(KEEP_TRAY_NAME);
+            if (trayIcon1!=null){
+                return trayIcon1;
+            }
             TrayIcon trayIcon = createTrayIcon(jFrame);
 
             try {
